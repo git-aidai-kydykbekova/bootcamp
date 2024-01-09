@@ -38,14 +38,6 @@ public class MainController {
         userService.updateById(id,userRequest);
     }
 
-
-
-
-
-//    @GetMapping("/delete/{id}")
-//    public UserResponse userResponse(@PathVariable Long id) {
-//
-//    }
 }
 
 
