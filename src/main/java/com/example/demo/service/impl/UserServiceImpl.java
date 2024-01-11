@@ -1,14 +1,13 @@
-package com.example.demo.service.impl.impl;
+package com.example.demo.service.impl;
 
 import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserResponse;
 import com.example.demo.entities.User;
-import com.example.demo.exception.ApiException;
+
 import com.example.demo.exception.ApiRequestException;
 import com.example.demo.repositories.UserRepository;
-import com.example.demo.service.impl.UserService;
+import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -48,18 +47,21 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findById(id);
 
         if (user.isEmpty()){
+
             throw new ApiRequestException("We can't find id");
         }
         else {
             userRepository.deleteById(id);
         }
+
     }
     @Override
     public void updateById(Long id,UserRequest userRequest) {
         Optional<User> user = userRepository.findById(id);
-        if (user.isEmpty()){
-            System.out.println("user is empty!");
 
+        if (user.isEmpty()){
+            System.out.println("EMPTY");
+            throw new ApiRequestException("ID is NOT FOUNDED");
         }
         else {
             user.get().setName(userRequest.getName());
@@ -67,7 +69,7 @@ public class UserServiceImpl implements UserService {
             user.get().setCourse(userRequest.getCourse());
             userRepository.save(user.get());
         }
-        throw new ApiRequestException("ID is NOT FOUNDED");
+
     }
 
 
@@ -80,5 +82,6 @@ public class UserServiceImpl implements UserService {
 
         userRepository.save(user);
     }
+
 
 }

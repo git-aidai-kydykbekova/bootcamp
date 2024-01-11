@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class ApiExceptionHandler {
     @ExceptionHandler(value = {ApiRequestException.class})
     public ResponseEntity<Object> handleApiException(ApiRequestException e) {
-        HttpStatus badRequest = HttpStatus.BAD_REQUEST;
+        HttpStatus notFound = HttpStatus.NOT_FOUND;
         ApiException apiException = new ApiException(
             e.getMessage(),
-            badRequest
+            notFound
         );
-        return new ResponseEntity<>(apiException,badRequest);
+        return new ResponseEntity<>(apiException,notFound);
     }
+
+
 }

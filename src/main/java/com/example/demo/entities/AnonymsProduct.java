@@ -1,26 +1,17 @@
 package com.example.demo.entities;
 
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
-@Entity
 @Getter
 @Setter
-@Table(name = "users_table")
-public class User {
-
+@Entity
+@Table(name = "product_table_anonym")
+public class AnonymsProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Integer age;
-    private String course;
-
-    @OneToMany
-    List<Product> userProducts;
-
+    private Integer price;
 }

@@ -4,7 +4,7 @@ import com.example.demo.dto.UserRequest;
 import com.example.demo.dto.UserResponse;
 import com.example.demo.entities.User;
 import com.example.demo.repositories.UserRepository;
-import com.example.demo.service.impl.UserService;
+import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +25,7 @@ public class MainController {
     public UserResponse userResponse(@PathVariable Long id){
         return userService.getById(id);
     }
-    @PostMapping("/register")
+    @PostMapping("/registerUser")
     public void register(@RequestBody UserRequest userRequest){
         userService.register(userRequest);
     }
@@ -33,10 +33,11 @@ public class MainController {
     public void delete(@PathVariable Long id) {
         userService.deleteById(id);
     }
-    @PutMapping("/update/{id}")
-    public void update(@PathVariable Long id, @RequestBody UserRequest userRequest) {
-        userService.updateById(id,userRequest);
-    }
+//    @PutMapping("/update/{id}")
+//    public void update(@PathVariable Long id, @RequestBody UserRequest userRequest) {
+//        userService.updateById(id,userRequest);
+//    }
+
 
 }
 
